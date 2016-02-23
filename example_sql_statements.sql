@@ -160,7 +160,7 @@ But first we need to find the next avaliable customerNumber
 since the table doesn't have auto-increment set on it.
 We can order the numbers in descending order and only
 select the very first one. */
-SELECT `customerNumber` FROM `classicmodels.customers` ORDER BY `customerNumber` DESC LIMIT 1;
+SELECT `customerNumber` FROM `classicmodels`.`customers` ORDER BY `customerNumber` DESC LIMIT 1;
 
 /* We got 496 for the highest customerNumber.  Let's use 497 then. */
 INSERT INTO `classicmodels`.`customers`

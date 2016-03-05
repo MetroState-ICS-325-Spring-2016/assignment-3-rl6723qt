@@ -48,7 +48,9 @@ if ($mysql_connection->connect_errno) {
 //
 // For your query, you will need to join the customers and employees
 // tables together.
-$query_result = $mysql_connection->query("SELECT your query here");
+$query_result = $mysql_connection->query("select customerName, country, firstName, lastName from customers c, employees e
+                                          where c.salesRepEmployeeNumber = e.employeeNumber
+                                          order by country ASC, customerName ASC;");
 
 // Make sure there wasn't an error with the query.
 if ($query_result !== false) {
@@ -56,6 +58,11 @@ if ($query_result !== false) {
     // http://php.net/manual/en/mysqli-result.fetch-assoc.php
     while($row_array = $query_result->fetch_assoc()) {
 	    // Your output goes here
+        print_r($row_array["customerName"] . ", ");
+        print_r($row_array["country"] . " - ");
+        print_r($row_array["firstName"] . " ");
+        print_r($row_array["lastName"]);
+        print_r("\n");
     }
 
     // We're done with the query result set, so free it.
